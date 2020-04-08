@@ -1,19 +1,63 @@
 spring:
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/employees?useSSL=false&serverTimezone=Asia/Shanghai&autoReconnect=true&useUnicode=true&characterEncoding=utf8
-    driver-class-name: com.mysql.cj.jdbc.Driver
-#    type: com.alibaba.druid.pool.DruidDataSource
-    username: root
-    password: 123
-
-mybatis-plus:
-#  实体扫描 多个文件用,或者;分隔
-#  typeAliasesPackage: com.digitalbase.datasource.bean
+  profiles:
+    active: debug
+mybatis:
+  type-aliases-package: com.digitalbase.datasource.beans
+  mapper-locations: classpath:**/xml/*.xml
 logging:
   level:
-    root: warn
-    com.digitalbase.datasource.dao: trace
-  pattern:
-    console: '%p%m%n'
+    com:
+      laowang:
+        datasource:
+          mapper: debug
+---
+#alpha
+spring:
+  profiles: run
+
 server:
-  port: 9981
+  port: 1000
+
+---
+#beta
+spring:
+  profiles: debug
+  datasource:
+    ds1:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/employees?useSSL=false&serverTimezone=Asia/Shanghai&autoReconnect=true&useUnicode=true&characterEncoding=utf8
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      username: root
+      password: 123
+    ds2:
+      jdbc-url: jdbc:mysql://127.0.0.1:33062/world?useSSL=false&serverTimezone=Asia/Shanghai&autoReconnect=true&useUnicode=true&characterEncoding=utf8
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      username: root
+      password: root
+
+server:
+  port: 8964
+
+---
+#dongguan
+spring:
+  profiles: dongguan
+
+server:
+  port: 1002
+
+---
+#通用区
+spring:
+  profiles: general
+
+server:
+  port: 1002
+---
+#gamma
+spring:
+  profiles: gamma
+
+server:
+  port: 1002
