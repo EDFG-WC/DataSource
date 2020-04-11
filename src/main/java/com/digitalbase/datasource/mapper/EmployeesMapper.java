@@ -3,7 +3,7 @@ package com.digitalbase.datasource.mapper;
 
 import com.digitalbase.datasource.beans.Employees;
 import com.digitalbase.datasource.beans.EmployeesExample;
-import com.digitalbase.datasource.beans.business.BasicInfoBean;
+import com.digitalbase.datasource.beans.business.ParamsBean;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -97,5 +97,5 @@ public interface EmployeesMapper {
      */
     int updateByPrimaryKey(Employees record);
 
-    Employees selectByEmpNum(@Param("basicInfo") BasicInfoBean bib);
+    Employees selectByEmpNum(@Param("basicInfo") ParamsBean bib);
 }

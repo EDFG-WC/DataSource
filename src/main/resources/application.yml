@@ -39,7 +39,10 @@ spring:
 server:
   port: 8964
 
-filePath: D:\Test
+parse-file-path: D:\Test
+#端口是不会变的, 从配置文件读取即可
+mysql-server-port: 3306
+default-ds: ds1
 
 ---
 #dongguan

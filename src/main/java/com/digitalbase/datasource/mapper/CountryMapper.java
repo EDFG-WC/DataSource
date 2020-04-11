@@ -2,7 +2,7 @@ package com.digitalbase.datasource.mapper;
 
 import com.digitalbase.datasource.beans.Country;
 import com.digitalbase.datasource.beans.CountryExample;
-import com.digitalbase.datasource.beans.business.BasicInfoBean;
+import com.digitalbase.datasource.beans.business.ParamsBean;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -96,5 +96,5 @@ public interface CountryMapper {
      */
     int updateByPrimaryKey(Country record);
 
-    Country selectByName(@Param("basicInfo") BasicInfoBean bib);
+    Country selectByName(@Param("basicInfo") ParamsBean bib);
 }

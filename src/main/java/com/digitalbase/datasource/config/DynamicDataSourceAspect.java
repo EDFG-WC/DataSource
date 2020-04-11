@@ -1,7 +1,7 @@
 package com.digitalbase.datasource.config;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
-import com.digitalbase.datasource.beans.business.BasicInfoBean;
+import com.digitalbase.datasource.beans.business.ParamsBean;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -32,8 +32,8 @@ import java.util.Properties;
     @Before("test()") public void switchDataSource(JoinPoint point) throws Exception {
         Object[] args = point.getArgs();
         for (Object obj : args) {
-            if (obj instanceof BasicInfoBean) {
-                BasicInfoBean bean = (BasicInfoBean)obj;
+            if (obj instanceof ParamsBean) {
+                ParamsBean bean = (ParamsBean)obj;
                 String baseName = bean.getBaseName();
                 if (DynamicDataSourceContextHolder.containDataSourceKey(baseName)) {
                     DynamicDataSourceContextHolder.setDataSourceKey(baseName);
@@ -66,7 +66,7 @@ import java.util.Properties;
                 + point.getSignature() + "]");
     }
 
-    private DataSource determineDataSource(BasicInfoBean bean) throws Exception {
+    private DataSource determineDataSource(ParamsBean bean) throws Exception {
         Properties properties = new Properties();
         properties.put("driverClassName", "com.mysql.jdbc.Driver");
         properties.put("url", "jdbc:mysql://127.0.0.1:" + bean.getPort() + "/" + bean.getBaseName()
