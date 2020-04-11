@@ -53,9 +53,11 @@ public class MyBatisConfig {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         // 配置数据源，此处配置为关键配置，如果没有将 dynamicDataSource作为数据源则不能实现切换
         sessionFactory.setDataSource(dynamicDataSource());
-        sessionFactory.setTypeAliasesPackage("com.digital.**.bean");    // 扫描Model
+        // 扫描Model
+        sessionFactory.setTypeAliasesPackage("com.digital.**.bean");
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sessionFactory.setMapperLocations(resolver.getResources("classpath*:**/xml/*.xml"));    // 扫描映射文件
+        // 扫描映射文件
+        sessionFactory.setMapperLocations(resolver.getResources("classpath*:**/xml/*.xml"));
         return sessionFactory;
     }
 

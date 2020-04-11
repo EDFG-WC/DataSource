@@ -14,34 +14,27 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2018/10/21 22:11
  * @Description: 使用@Controller注解, 不会把返回值成json, 返回的hello会指向hello.html
  */
-@RestController
-public class TestController2 {
-    @Autowired
-    private EmployeesMapper employeesMapper;
+@RestController public class TestController2 {
+    @Autowired private EmployeesMapper employeesMapper;
 
-    @Autowired
-    private CountryMapper countryMapper;
+    @Autowired private CountryMapper countryMapper;
 
-    @RequestMapping("/hello")
-    public String sayHello() {
-//		model.addAttribute("name", "老王");
+    @RequestMapping("/hello") public String sayHello() {
+        // model.addAttribute("name", "老王");
         return "hello";
     }
 
-    @RequestMapping("/getOneEmp")
-    public String getOneEmp() {
+    @RequestMapping("/getOneEmp") public String getOneEmp() {
         Employees employees = employeesMapper.selectByPrimaryKey(10019);
         return employees.toString();
     }
 
-    @RequestMapping("/getOneCountry")
-    public String getOneCountry() {
+    @RequestMapping("/getOneCountry") public String getOneCountry() {
         Country country = countryMapper.selectByPrimaryKey("ABW");
         return country.toString();
     }
 
-    @RequestMapping("/getTest")
-    public String test001() {
+    @RequestMapping("/getTest") public String test001() {
         BasicInfoBean bib = new BasicInfoBean();
         bib.setBaseName("world");
         bib.setDsName("ds2");
@@ -52,8 +45,7 @@ public class TestController2 {
         return country.toString();
     }
 
-    @RequestMapping("/getTest2")
-    public String test002() {
+    @RequestMapping("/getTest2") public String test002() {
         BasicInfoBean bib = new BasicInfoBean();
         bib.setBaseName("employees");
         bib.setDsName("ds1");
